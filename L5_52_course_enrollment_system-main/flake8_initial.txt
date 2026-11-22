@@ -1,0 +1,12 @@
+course_enrollment_system.py:4:1: F401 'math' imported but unused
+course_enrollment_system.py:7:80: E501 line too long (88 > 79 characters)
+course_enrollment_system.py:8:80: E501 line too long (89 > 79 characters)
+course_enrollment_system.py:9:80: E501 line too long (88 > 79 characters)
+course_enrollment_system.py:15:80: E501 line too long (81 > 79 characters)
+course_enrollment_system.py:23:80: E501 line too long (135 > 79 characters)
+course_enrollment_system.py:31:5: E722 do not use bare 'except'
+course_enrollment_system.py:36:5: F841 local variable 'lab_fee' is assigned to but never used
+course_enrollment_system.py:37:31: E711 comparison to None should be 'if cond is None:'
+course_enrollment_system.py:46:5: F841 local variable 'base_fee' is assigned to but never used
+course_enrollment_system.py:79:80: E501 line too long (86 > 79 characters)
+course_enrollment_system.py:87:7: W292 no newline at end of file

@@ -1,0 +1,82 @@
+Run started:2026-11-05 05:16:26.678176+00:00
+
+Test results:
+>> Issue: [B110:try_except_pass] Try, Except, Pass detected.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b110_try_except_pass.html
+   Location: ./course_enrollment_system.py:31:4
+30	        courses[course_id]["is_closed"] = False
+31	    except:
+32	        pass
+33	
+
+--------------------------------------------------
+>> Issue: [B307:blacklist] Use of possibly insecure function - consider using safer ast.literal_eval.
+   Severity: Medium   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/blacklists/blacklist_calls.html#b307-eval
+   Location: ./course_enrollment_system.py:47:14
+46	    base_fee = courses[course_id]["fee"]
+47	    net_fee = eval(discount_expr)
+48	    return net_fee
+
+--------------------------------------------------
+>> Issue: [B324:hashlib] Use of weak MD5 hash for security. Consider usedforsecurity=False
+   Severity: High   Confidence: High
+   CWE: CWE-327 (https://cwe.mitre.org/data/definitions/327.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b324_hashlib.html
+   Location: ./course_enrollment_system.py:52:11
+51	def generateStudentHash(roll_no):
+52	    return hashlib.md5(roll_no.encode()).hexdigest()
+53	
+
+--------------------------------------------------
+>> Issue: [B311:blacklist] Standard pseudo-random generators are not suitable for security/cryptographic purposes.
+   Severity: Low   Confidence: High
+   CWE: CWE-330 (https://cwe.mitre.org/data/definitions/330.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/blacklists/blacklist_calls.html#b311-random
+   Location: ./course_enrollment_system.py:56:11
+55	def generateEnrollmentOtp():
+56	    return random.randint(1000, 9999)
+57	
+
+--------------------------------------------------
+>> Issue: [B605:start_process_with_a_shell] Starting a process with a shell, possible injection detected, security issue.
+   Severity: High   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b605_start_process_with_a_shell.html
+   Location: ./course_enrollment_system.py:63:4
+62	    f.close()
+63	    os.system("echo Course roster exported to: " + filename)
+64	
+
+--------------------------------------------------
+>> Issue: [B105:hardcoded_password_string] Possible hardcoded password: 'REGISTRAR_PORTAL_ROOT_SECRET_2026'
+   Severity: Low   Confidence: Medium
+   CWE: CWE-259 (https://cwe.mitre.org/data/definitions/259.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b105_hardcoded_password_string.html
+   Location: ./course_enrollment_system.py:75:27
+74	def main():
+75	    registrar_auth_token = "REGISTRAR_PORTAL_ROOT_SECRET_2026"
+76	    enrollStudent("CS101", "Kritika", 4)
+
+--------------------------------------------------
+
+Code scanned:
+	Total lines of code: 65
+	Total lines skipped (#nosec): 0
+	Total potential issues skipped due to specifically being disabled (e.g., #nosec BXXX): 0
+
+Run metrics:
+	Total issues (by severity):
+		Undefined: 0
+		Low: 3
+		Medium: 1
+		High: 2
+	Total issues (by confidence):
+		Undefined: 0
+		Low: 0
+		Medium: 1
+		High: 5
+Files skipped (0):

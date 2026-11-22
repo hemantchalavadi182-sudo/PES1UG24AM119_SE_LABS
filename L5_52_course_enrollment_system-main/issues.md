@@ -1,0 +1,17 @@
+# Static Code Analysis – Issues and Fixes
+
+| Issue                                | Type                                     |  Line(s) | Description                                                                 | Fix Approach                                                     |
+| ------------------------------------ | ---------------------------------------- | -------: | --------------------------------------------------------------------------- | ---------------------------------------------------------------- |
+| Weak MD5 hashing                     | Bandit B324 – High                       |       52 | MD5 is not suitable for security-sensitive hashing.                         | Replaced MD5 with SHA-256.                                       |
+| Unsafe shell command execution       | Bandit B605 – High                       |       63 | os.system() can introduce command injection vulnerabilities.                | Removed os.system() and used Python print().                     |
+| Unsafe eval() usage                  | Bandit B307 – Medium                     |       47 | eval() can execute potentially malicious expressions.                       | Replaced eval() with a numeric discount percentage calculation.  |
+| Mutable default argument             | Pylint W0102                             |       15 | A shared list can retain values between function calls.                     | Changed the default argument to None and initialized a new list. |
+| Bare exception handling              | Bandit B110 / Pylint W0702 / Flake8 E722 |       31 | A bare except can hide unexpected errors.                                   | Caught KeyError specifically.                                    |
+| Unused variables                     | Pylint W0612 / Flake8 F841               |   36, 46 | Variables were assigned but never used.                                     | Removed unnecessary variables.                                   |
+| Insecure OTP generation              | Bandit B311 – Low                        |       56 | random.randint() is not suitable for security-sensitive OTP generation.     | Used secrets.randbelow().                                        |
+| Hardcoded authentication token       | Bandit B105 – Low                        |       75 | A secret token was stored directly in source code.                          | Read the token from an environment variable.                     |
+| Missing file encoding                | Pylint W1514                             |       60 | File encoding was not explicitly specified.                                 | Added encoding="utf-8".                                          |
+| Missing docstrings and naming issues | Pylint C0114, C0116, C0103               | Multiple | Missing documentation and non-standard function names reduced code quality. | Added docstrings and changed function names to snake_case.       |
+| Formatting violations                | Flake8 E501, W292                        | Multiple | Long lines and missing final newline affected formatting.                   | Reformatted the code and added a final newline.                  |
+| Unused import                        | Pylint W0611 / Flake8 F401               |        4 | The math module was imported but not used.                                  | Removed the unused import.                                       |
+

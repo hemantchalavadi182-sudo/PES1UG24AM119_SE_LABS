@@ -1,0 +1,6 @@
+************* Module course_enrollment_system
+course_enrollment_system.py:38:4: W0603: Using the global statement (global-statement)
+
+------------------------------------------------------------------
+Your code has been rated at 9.84/10 (previous run: 9.84/10, +0.00)
+
